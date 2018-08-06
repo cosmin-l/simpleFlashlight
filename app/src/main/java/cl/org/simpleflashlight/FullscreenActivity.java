@@ -17,7 +17,6 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
-//    private static final int UI_ANIMATION_DELAY = 300; //original app compat value
     private static final int UI_ANIMATION_DELAY = 2;
 
     private final Handler mHideHandler = new Handler();
@@ -131,14 +130,13 @@ public class FullscreenActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-//        mHideHandler.post(mHideRunnable);
 
     }
 
     private void switchOn() {
         CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
-            String cameraId = camManager.getCameraIdList()[0]; // Usually front camera is at 0 position.
+            String cameraId = camManager.getCameraIdList()[0];
             camManager.setTorchMode(cameraId, true);
             lightOn = true;
             mContentView.setImageResource(R.drawable.eyes_on);
@@ -157,7 +155,7 @@ public class FullscreenActivity extends AppCompatActivity {
         CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
 
-            String cameraId = camManager.getCameraIdList()[0]; // Usually front camera is at 0 position.
+            String cameraId = camManager.getCameraIdList()[0];
             camManager.setTorchMode(cameraId, false);
             lightOn = false;
             mContentView.setImageResource(R.drawable.eyes_off);
